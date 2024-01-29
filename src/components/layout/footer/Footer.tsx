@@ -1,7 +1,6 @@
 import { Center, HStack, Text } from "@chakra-ui/react"
 
-
-export const Footer = () => {
+export const Footer = () => {  
   return(
     <Center w="full" p={{base: 1, md: 2}} bg="gray.900" color="whiteAlpha.900">
       <HStack spacing="10%">
