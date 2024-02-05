@@ -1,8 +1,12 @@
-import { Center, HStack, Text } from "@chakra-ui/react"
+'use client'
+import { Center, HStack, Text, useColorMode, useColorModeValue } from "@chakra-ui/react"
 
-export const Footer = () => {  
+export const Footer = () => {
+  const bg = useColorModeValue('gray.900', 'gray.200')
+  const color = useColorModeValue('whiteAlpha.900', 'blackAlpha.900')
+  
   return(
-    <Center w="full" p={{base: 1, md: 2}} bg="gray.900" color="whiteAlpha.900">
+    <Center w="full" p={{base: 1, md: 2}} bg={bg} color={color}>
       <HStack spacing="10%">
         <HStack spacing="3%">
           <Text fontSize={{base: "xs", md: "sm"}} >Copyright©</Text>
