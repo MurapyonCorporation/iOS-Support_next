@@ -4,7 +4,7 @@ import { Providers } from './providers'
 import { Header } from '@/components/layout/header/Header'
 import { Footer } from '@/components/layout/footer/Footer'
 import { ColorModeScript, Grid, GridItem } from '@chakra-ui/react'
-import theme from './styles/theme'
+import theme from './theme/theme'
 
 // nextjs 14でchakra UIを使用する場合は以下を参考。（Getting Started with Next.js (Pages)ではないので注意！）
 // https://chakra-ui.com/getting-started
