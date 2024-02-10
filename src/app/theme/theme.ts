@@ -8,7 +8,14 @@ const config: ThemeConfig = {
 }
 
 // 3. extend the theme
-const theme = extendTheme({ 
+const theme = extendTheme({
+  styles: {
+    global: (props: { colorMode: string }) => ({
+      body: {
+        backgroundColor: props.colorMode === 'light' ? 'gray.100' : 'gray.900'
+      }
+    })
+  },
   config
 })
 
