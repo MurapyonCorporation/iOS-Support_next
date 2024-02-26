@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import { Button } from "@chakra-ui/react"
 import { FC, ReactNode, memo } from "react"
 

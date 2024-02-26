@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import { HamburgerIcon } from "@chakra-ui/icons"
 import { IconButton } from "@chakra-ui/react"
 import { FC, memo } from "react";

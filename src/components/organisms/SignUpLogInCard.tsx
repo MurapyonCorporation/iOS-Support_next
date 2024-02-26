@@ -1,18 +1,20 @@
+/* eslint-disable react/display-name */
 'use client'
 import { FC, ReactNode, memo } from "react"
-import { Flex, Card, CardHeader, Heading, Divider, CardBody, Stack, StackDivider, CardFooter } from "@chakra-ui/react"
+import { Flex, Card, CardHeader, Heading, Divider, CardBody, Stack, StackDivider, CardFooter, Button } from "@chakra-ui/react"
 import { PrimaryButton } from "../atoms/button/PrimaryButton"
 
 type Props = {
   headingText: string;
   colorScheme: string;
-  onClick: () => void;
+  disabled: boolean;
+  onClick: (e: React.FormEvent) => void;
   buttonText: string;
   children: ReactNode;
 }
 
 export const SignUpLogInCard: FC<Props> = memo((props) => {
-  const { headingText, colorScheme, onClick, buttonText, children } = props;
+  const { headingText, colorScheme, disabled, onClick, buttonText, children } = props;
   
   return (
     <Flex align={'center'} justify={'center'} height={"100%"}>
@@ -25,7 +27,7 @@ export const SignUpLogInCard: FC<Props> = memo((props) => {
           <Stack spacing={5} divider={<StackDivider />}>{children}</Stack>
         </CardBody>
         <CardFooter justify={"center"}>
-          <PrimaryButton colorScheme={colorScheme} size={{ base: "md", md: "lg" }} onClick={onClick}>{buttonText}</PrimaryButton>
+          <Button colorScheme={colorScheme} size={{ base: "md", md: "lg" }} isDisabled={disabled} onClick={onClick}>{buttonText}</Button>
         </CardFooter>
       </Card>
     </Flex>

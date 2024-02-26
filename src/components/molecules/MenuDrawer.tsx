@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import { Button, Drawer, DrawerBody, DrawerContent, DrawerOverlay } from "@chakra-ui/react";
 import { FC, memo } from "react"
 
