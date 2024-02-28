@@ -7,6 +7,25 @@ import { InputForm } from "@/components/atoms/InputForm";
 import { SignUpLogInCard } from "@/components/organisms/SignUpLogInCard";
 import axios from "axios";
 import { User } from "../types/User";
+import {
+  Box,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  IconButton,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  InputRightElement,
+} from "@chakra-ui/react";
+import { useForm } from "react-hook-form";
+import { type } from "os";
+
+type Form = {
+  email: string;
+  password: string;
+  passwordConfirm: string;
+};
 
 export default function Signup() {
   const [show, setShow] = useState(false);
@@ -20,6 +39,12 @@ export default function Signup() {
   const hundleClick = () => setShow(!show);
   const confirmHundleClick = () => setConfirmShow(!confirmShow);
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Form>();
+
   const onChangeInputName = (e: ChangeEvent<HTMLInputElement>) =>
     setInputName(e.target.value);
   const onChangeInputEmail = (e: ChangeEvent<HTMLInputElement>) =>
@@ -29,14 +54,15 @@ export default function Signup() {
   const onChangeInputConfirmation = (e: ChangeEvent<HTMLInputElement>) =>
     setInputConfirmation(e.target.value);
 
-  const onClickSignUp = async (e: React.FormEvent) => {
-    e.preventDefault();
-    await axios.post<User>("http://localhost:3000/v1/users", {
-      name: inputName,
-      email: inputEmail,
-      password: inputPassword,
-    });
-  };
+  // const onClickSignUp = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   await axios.post<User>("http://localhost:3000/v1/users", {
+  //     name: inputName,
+  //     email: inputEmail,
+  //     password: inputPassword,
+  //   });
+  // };
+  const onClickSignUp = handleSubmit((data) => alert(data));
 
   return (
     <SignUpLogInCard
@@ -70,7 +96,21 @@ export default function Signup() {
           onChange={onChangeInputEmail}
         />
       </FormBox>
-      <FormBox isRequired={true} formLabel="Password">
+      <FormControl isInvalid={Boolean(errors.email)}>
+        <Input
+          type="email"
+          {...register("email", {
+            pattern: {
+              value: /^[a-zA-Z0-9-_\.]+@[a-zA-Z0-9-_\.]+$/,
+              message: "メールアドレスを入力してください",
+            },
+          })}
+        />
+        <FormErrorMessage>
+          {errors.email && errors.email.message}
+        </FormErrorMessage>
+      </FormControl>
+      <FormBox isRequired={true} formLabel="Passoword">
         <InputForm
           formLabel="Password"
           type={show ? "text" : "password"}
@@ -82,7 +122,7 @@ export default function Signup() {
           onClick={hundleClick}
         />
       </FormBox>
-      <FormBox isRequired={true} formLabel="Password Confirmation">
+      <FormBox isRequired={true} formLabel="Passoword Confirmation">
         <InputForm
           formLabel="Password Confirmation"
           type={confirmShow ? "text" : "password"}

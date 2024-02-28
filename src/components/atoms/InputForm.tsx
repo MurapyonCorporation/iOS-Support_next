@@ -8,6 +8,7 @@ import {
   InputRightElement,
   FormErrorMessage,
 } from "@chakra-ui/react";
+import { useForm } from "react-hook-form";
 
 type Props = {
   formLabel: string;
@@ -21,13 +22,13 @@ type Props = {
 };
 
 type Form = {
-  userName: string;
   email: string;
   password: string;
   passwordConfirm: string;
 };
 
 export const InputForm: FC<Props> = memo((props) => {
+  const { register, handleSubmit, formState: { errors } } = useForm<Form>();
   const {
     formLabel,
     type,
@@ -48,8 +49,12 @@ export const InputForm: FC<Props> = memo((props) => {
         type={type}
         placeholder={placeholder}
         value={value}
+        {...register('email', {
+          pattern: { value: /^[a-zA-Z0-9-_\.]+@[a-zA-Z0-9-_\.]+$/, message: 'メールアドレスを入力してください' }
+        })}
         onChange={onChange}
       />
+      <FormErrorMessage>{errors.email && errors.email.message}</FormErrorMessage>
       {formLabel === "Password" || formLabel === "Password Confirmation" ? (
         <InputRightElement>
           <IconButton
