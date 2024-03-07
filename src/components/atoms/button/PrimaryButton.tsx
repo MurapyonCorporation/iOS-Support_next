@@ -3,17 +3,18 @@ import { Button } from "@chakra-ui/react"
 import { FC, ReactNode, memo } from "react"
 
 type Props = {
+  type: "button" | "submit" | "reset";
   children: ReactNode;
   colorScheme: string;
-  color?: string;
+  isdisabled: boolean
   size?: object;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export const PrimaryButton: FC<Props> = memo((props) => {
-  const { colorScheme, color, size, onClick, children } = props;
+  const { type, colorScheme, size, isdisabled,  onClick, children } = props;
   return (
-    <Button colorScheme={colorScheme} color={color} size={size} onClick={onClick}>
+    <Button type={type} colorScheme={colorScheme} isDisabled={isdisabled} size={size} onClick={onClick}>
       {children}
     </Button>
   )
