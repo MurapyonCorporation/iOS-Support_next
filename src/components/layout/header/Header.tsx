@@ -2,7 +2,6 @@
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import {
   Link,
-  Button,
   ButtonGroup,
   Flex,
   Heading,

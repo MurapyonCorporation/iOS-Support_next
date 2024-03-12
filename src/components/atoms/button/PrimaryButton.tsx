@@ -8,13 +8,14 @@ type Props = {
   colorScheme: string;
   isdisabled: boolean
   size?: object;
+  isLoading?: boolean;
   onClick?: () => void;
 }
 
 export const PrimaryButton: FC<Props> = memo((props) => {
-  const { type, colorScheme, size, isdisabled,  onClick, children } = props;
+  const { type, colorScheme, size, isdisabled, isLoading, onClick, children } = props;
   return (
-    <Button type={type} colorScheme={colorScheme} isDisabled={isdisabled} size={size} onClick={onClick}>
+    <Button type={type} colorScheme={colorScheme} isDisabled={isdisabled} size={size} isLoading={isLoading} onClick={onClick}>
       {children}
     </Button>
   )
