@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { ImUser } from "react-icons/im";
 import { EmailIcon, LockIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-import { SignLogForm } from "@/components/molecules/form/SignLogForm";
+import { SignUpForm } from "@/components/molecules/form/SignUpForm";
 import axios from "axios";
 import { User } from "../types/User";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -21,7 +21,7 @@ import {
 } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 
-export type Form = {
+export type SignUpInterface = {
   name: string;
   email: string;
   password: string;
@@ -42,9 +42,9 @@ export default function Signup() {
     handleSubmit,
     getValues,
     formState: { errors, isValid, isSubmitting },
-  } = useForm<Form>({ mode: "all" });
+  } = useForm<SignUpInterface>({ mode: "all" });
 
-  const onSubmitSignUp: SubmitHandler<Form> = async (data) => {
+  const onSubmitSignUp: SubmitHandler<SignUpInterface> = async (data) => {
     await axios.post<User>("http://localhost:3000/v1/users", {
       name: data.name,
       email: data.email,
@@ -66,7 +66,7 @@ export default function Signup() {
           <CardBody>
             <Stack spacing={3} divider={<StackDivider />}>
               <Box>
-                <SignLogForm
+                <SignUpForm
                   isRequired={false}
                   isInvalid={false}
                   formLabel="User Name"
@@ -79,7 +79,7 @@ export default function Signup() {
                 />
               </Box>
               <Box>
-                <SignLogForm
+                <SignUpForm
                   isRequired={true}
                   isInvalid={errors.email ? true : false}
                   formLabel="Email"
@@ -92,7 +92,7 @@ export default function Signup() {
                 />
               </Box>
               <Box>
-                <SignLogForm
+                <SignUpForm
                   isRequired={true}
                   isInvalid={errors.password ? true : false}
                   formLabel="Password"
@@ -107,7 +107,7 @@ export default function Signup() {
                 />
               </Box>
               <Box>
-                <SignLogForm
+                <SignUpForm
                   isRequired={true}
                   isInvalid={errors.passwordConfirm ? true : false}
                   formLabel="Password Confirm"

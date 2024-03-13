@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import { Form } from "@/app/signup/page";
+import { SignUpInterface } from "@/app/signup/page";
 import {
   FormControl,
   FormErrorMessage,
@@ -24,17 +24,16 @@ type Props = {
   formLabel: string;
   type: string;
   placeholder: string;
-  register: UseFormRegister<Form>;
-  label: Path<Form>;
-  getValues?: UseFormGetValues<Form>;
-  errors: FieldErrors<Form>;
+  register: UseFormRegister<SignUpInterface>;
+  label: Path<SignUpInterface>;
+  getValues?: UseFormGetValues<SignUpInterface>;
+  errors: FieldErrors<SignUpInterface>;
   leftElementIcon: ReactElement;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   rightElementIcon?: ReactElement;
   onClick?: () => void;
 };
 
-export const SignLogForm: FC<Props> = memo((props) => {
+export const SignUpForm: FC<Props> = memo((props) => {
   const {
     isRequired,
     isInvalid,
@@ -46,7 +45,6 @@ export const SignLogForm: FC<Props> = memo((props) => {
     getValues,
     errors,
     leftElementIcon,
-    onChange,
     rightElementIcon,
     onClick,
   } = props;
@@ -88,7 +86,6 @@ export const SignLogForm: FC<Props> = memo((props) => {
                 value === getValues?.("password") || "パスワードが一致しません",
             }),
           }[label]}
-          onChange={onChange}
         />
         {(formLabel === "Password" || formLabel === "Password Confirm") && (
           <InputRightElement>
