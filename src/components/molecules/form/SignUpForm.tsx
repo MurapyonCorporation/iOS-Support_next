@@ -10,7 +10,7 @@ import {
   InputLeftElement,
   InputRightElement,
 } from "@chakra-ui/react";
-import { ChangeEvent, FC, ReactElement, memo } from "react";
+import { FC, ReactElement, memo } from "react";
 import {
   FieldErrors,
   Path,

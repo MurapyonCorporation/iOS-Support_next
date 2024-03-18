@@ -50,7 +50,7 @@ export default function Signup() {
       email: data.email,
       password: data.password,
     });
-    router.push("/")
+    router.push("/");
   };
 
   return (
@@ -129,7 +129,7 @@ export default function Signup() {
           <CardFooter justify={"center"}>
             <PrimaryButton
               type="submit"
-              colorScheme="linkedin"
+              colorScheme="teal"
               size={{ base: "md", md: "lg" }}
               isdisabled={!isValid || isSubmitting}
               isLoading={isSubmitting}

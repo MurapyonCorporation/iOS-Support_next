@@ -9,9 +9,8 @@ import {
   InputGroup,
   InputLeftElement,
   InputRightElement,
-  Link,
 } from "@chakra-ui/react";
-import { ChangeEvent, FC, ReactElement, memo } from "react";
+import { FC, ReactElement, memo } from "react";
 import {
   FieldErrors,
   Path,
@@ -28,7 +27,7 @@ type Props = {
   label: Path<LogInInterface>;
   errors: FieldErrors<LogInInterface>;
   leftElementIcon: ReactElement;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  // onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   rightElementIcon?: ReactElement;
   onClick?: () => void;
 };
@@ -44,7 +43,7 @@ export const LogInForm: FC<Props> = memo((props) => {
     label,
     errors,
     leftElementIcon,
-    onChange,
+    // onChange,
     rightElementIcon,
     onClick,
   } = props;
@@ -77,7 +76,6 @@ export const LogInForm: FC<Props> = memo((props) => {
               },
             })
           }[label]}
-          onChange={onChange}
         />
         {(formLabel === "Password" || formLabel === "Password Confirm") && (
           <InputRightElement>
