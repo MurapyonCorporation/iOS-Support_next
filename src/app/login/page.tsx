@@ -39,7 +39,7 @@ export default function Login() {
 
   // const onSubmitLogIn: SubmitHandler<LogInInterface> = async () => {}
   const onSubmitLogIn: SubmitHandler<LogInInterface> = (data) =>
-    console.log(data);
+  alert(JSON.stringify(data));
 
   return (
     <Flex align={"center"} justify={"center"} h={"100%"}>

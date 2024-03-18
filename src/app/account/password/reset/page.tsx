@@ -19,7 +19,7 @@ import {
   InputGroup,
   InputLeftElement,
 } from "@chakra-ui/react";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 export type resetPWInterface = {
   email: string;
@@ -32,10 +32,13 @@ export default function Reset() {
     formState: { errors, isValid, isSubmitting },
   } = useForm<resetPWInterface>({ mode: "all" });
 
+  const onSubmitResetPW: SubmitHandler<resetPWInterface> = (data) =>
+    alert(JSON.stringify(data));
+
   return (
     <Flex align={"center"} justify={"center"} h={"100%"}>
       <Card w={{ base: "xs", md: "lg" }}>
-        <form>
+        <form onSubmit={handleSubmit(onSubmitResetPW)}>
           <CardHeader>
             <Heading as="h3" size="lg" textAlign="center">
               reset password
@@ -45,7 +48,10 @@ export default function Reset() {
           <CardBody>
             <Stack spacing={3} divider={<StackDivider />}>
               <Box>
-                <FormControl isRequired={true} isInvalid={errors.email ? true : false}>
+                <FormControl
+                  isRequired={true}
+                  isInvalid={errors.email ? true : false}
+                >
                   <FormLabel>Email</FormLabel>
                   <InputGroup>
                     <InputLeftElement>
